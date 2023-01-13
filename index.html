@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript CRUD Part-1</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        /*we can write css code here*/
+    </style>
+    <script>
+        /*we can write js code before closing of closing of head tag*/
+    </script>
+</head>
+
+<body>
+    <form action="">
+        <input name="name" type="text" placeholder="Enter your name">
+        <input name="surname" type="text" placeholder="Enter your Surname">
+        <input name="address" type="text" placeholder="Enter your address">
+        <input type="button" value="Save" onclick="display()">
+    </form>
+    <hr>
+    <table border="1px" id="myTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Address</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Devanand</td>
+                <td>Verma</td>
+                <td>Bhopal</td>
+                <td>
+                    <button>View</button>
+                    <button>Edit</button>
+                    <button>Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        /*we can write js code before closing of closing of body tag*/
+        // There are two way to define a function-
+        //1. old way-
+
+        // function display() {
+        //     //Block of code
+        //     alert("Hello function definition");
+        // }
+
+        //2. New way-introduced in (ES6-2015) version.
+        //this is global variable
+        let nm = document.querySelector('input[name = "name"]');
+        let sn = document.querySelector('input[name = "surname"]');
+        let addr = document.querySelector('input[name = "address"]');
+        let tbdy = document.querySelector('table#myTable tbody');
+
+        let display = () => {
+            //alert("Hello new function definition");
+            console.log(nm.value);
+            console.log(sn.value);
+            console.log(addr.value);
+            console.log(tbdy);
+            tbdy.innerHTML += `<tr>
+                                    <td>${nm.value}</td>
+                                    <td>${sn.value}</td>
+                                    <td>${addr.value}</td>
+                                    <td>
+                                        <button>View</button>
+                                        <button>Edit</button>
+                                        <button onclick = "deleteElement(this)">Delete</button>
+                                    </td>
+                                </tr>`
+            nm.value = sn.value = addr.value = '';
+        }
+        let deleteElement = (d) => {
+            //alert("Hello");
+            //console.log(d);
+            var x = confirm("Do you really want to remove data");
+
+            d.closest('tr').remove();
+
+
+
+        }
+
+    </script>
+
+</body>
+
+</html>
